@@ -1,0 +1,28 @@
+services:
+  grafana:
+    image: ghcr.io/fuck-you-isp/grafana:main
+    ports:
+      - '80:3000'
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: grafana
+    container_name: grafana
+  prometheus:
+    image: ghcr.io/fuck-you-isp/prometheus:main
+    ports:
+      - '9090:9090'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+    container_name: prometheus
+  network-exporter:
+    image: ghcr.io/fuck-you-isp/network-exporter:main
+    ports:
+      - '9427:9427'
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+    privileged: true
+    container_name: network-exporter
