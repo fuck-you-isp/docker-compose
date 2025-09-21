@@ -1,6 +1,7 @@
 services:
   grafana:
     image: ghcr.io/fuck-you-isp/grafana:main
+    #build: ../grafana
     ports:
       - '80:3000'
     restart: unless-stopped
@@ -10,8 +11,9 @@ services:
     container_name: grafana
   prometheus:
     image: ghcr.io/fuck-you-isp/prometheus:main
-    ports:
-      - '9090:9090'
+    #build: ../prometheus
+    # ports:
+    #   - '9090:9090'
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.retention.time=2d'
@@ -19,8 +21,9 @@ services:
     container_name: prometheus
   network-exporter:
     image: ghcr.io/fuck-you-isp/network-exporter:main
-    ports:
-      - '9427:9427'
+    #build: ../network-exporter
+    # ports:
+    #   - '9427:9427'
     cap_add:
       - NET_ADMIN
       - NET_RAW
