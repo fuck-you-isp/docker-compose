@@ -1,7 +1,7 @@
 services:
   grafana:
     image: ghcr.io/fuck-you-isp/grafana:main
-    #build: ../grafana
+    # build: ../grafana
     ports:
       - '80:3000'
     restart: unless-stopped
@@ -11,7 +11,7 @@ services:
     container_name: grafana
   prometheus:
     image: ghcr.io/fuck-you-isp/prometheus:main
-    #build: ../prometheus
+    # build: ../prometheus
     # ports:
     #   - '9090:9090'
     command:
@@ -21,7 +21,7 @@ services:
     container_name: prometheus
   network-exporter:
     image: ghcr.io/fuck-you-isp/network-exporter:main
-    #build: ../network-exporter
+    # build: ../network-exporter
     # ports:
     #   - '9427:9427'
     cap_add:
