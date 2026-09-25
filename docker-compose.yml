@@ -3,7 +3,7 @@ services:
     image: ghcr.io/fuck-you-isp/grafana:main
     # build: ../grafana
     ports:
-      - '80:3000'
+      - '3000:3000'
     restart: unless-stopped
     environment:
       GF_SECURITY_ADMIN_USER: admin
